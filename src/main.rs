@@ -27,6 +27,9 @@ fn main() {
 
     change(&mut s_mut);
     println!("{}", s_mut);
+
+    //function to find out the first word
+    first_word(&s1);
 }
 
 fn take_ownership(some_string: String) {
@@ -43,4 +46,17 @@ fn calculate_len(s2: &String) -> usize {
 }
 fn change(some_string: &mut String) {
     some_string.push_str(", Welcome to the new world of Rust!!");
+}
+//function to get the first word
+fn first_word(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i , &item) in bytes.iter().enumerate()  {
+        if item == b' ' {
+            return &s[0..i];
+            
+        }        
+        
+    }
+    &s[..]
 }
